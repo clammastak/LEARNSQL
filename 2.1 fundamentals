@@ -1,0 +1,24 @@
+---create and restore a database-------------------------------------
+
+---create and restore a table schema---*table format, labels, layout---
+
+---return values/rows of actor_id-------------------------------------
+SELECT actor_id FROM actor;
+
+---select distinct--------------------------------------------------
+SELECT DISTINCT release_year FROM film;
+
+---what are the different rental rates?----------------------------------
+SELECT DISTINCT rental_rate FROM film;
+
+---what types of ratings can movies get?------------------------------
+SELECT * FROM film;
+SELECT DISTINCT rating FROM film;
+
+
+
+
+
+
+
+
