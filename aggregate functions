@@ -1,0 +1,36 @@
+Select * From MYSALARY                  (1,10000; 2,8000; 3,6000)
+
+----aggregate functions-----------------------------------
+Select AVG(salary) from MYSALARY        (8,000)
+
+Select COUNT(salary) from MYSALARY      (3) number of entries
+Select COUNT(*) from MYSALARY           (3) number of rows
+
+Select SUM(salary) from MYSALARY        (24,000)
+
+Select MIN(salary) from MYSALARY        (6,000)
+Select MAX(salary) from MYSALARY        (10,000)
+
+Select * from MYORDER
+
+---concatenate---------------(combine text)-----------------------------
+PRINT CONCAT('String 1', 'String 2')
+Select OrderNumber, OrderName, CONCAT(OrderName, ' ', OrderName) as ConcatenatedText from MYORDER             (Someorder1 Someorder1)
+
+Select OrderNumber, OrderName, CONCAT(OrderName, ' ', RAND()) as ConcatenatedText from MYORDER                (Someorder1 0.609678)
+
+---LEFT function-------------(give the first x characters)--------------------------
+Select OrderNumber, OrderName, LEFT(OrderName, 5) from MYORDER                                                (Someo)
+
+---RIGHT function------------(give the first x characters from the right)----------
+Select OrderNumber, OrderName, RIGHT(OrderName, 5) from MYORDER                                                (rder1)
+
+---SUBSTRING function--------(give the letters in the middle)---------------------
+Select OrderNumber, OrderName, SUBSTRING(OrderName, 2, 5) from MYORDER                                         (meord)
+
+---LOWERcase function--------------------------(convert to lowercase)----------------
+Select OrderNumber, OrderName, LOWER(OrderName) from MYORDER
+
+---UPPERcase function--------------------------(convert to uppercase)----------------
+Select OrderNumber, OrderName, UPPER(OrderName) from MYORDER
+
