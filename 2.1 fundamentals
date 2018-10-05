@@ -23,9 +23,32 @@ SELECT customer_id, amount, payment_date FROM payment WHERE amount<=1 OR amount 
 
 ---find all payments that are NOT equal to 4.99? or equal to 4.99 or 1.99?---------------------------------
 SELECT * FROM payment WHERE amount != 4.99;
-SELECT amount, payment_date FROM payment WHERE amount = 4.99 OR amount = 1.99;
+SELECT amount, payment_date FROM payment WHERE amount = 4.99 OR amount = 1.99;            (AND doesnt work because conditions overlap)
 
+SELECT email FROM customer WHERE last_name = 'Thomas' AND first_name = 'Nancy';
+SELECT description FROM film WHERE title = 'Outlaw Hanky';
+SELECT phone FROM address WHERE address = '259 Ipoh Drive';
 
+---COUNT function--------return the number of input rows-----------------------does not consider NULL--------
+---COUNT distinct values only-----------
+SELECT COUNT(DISTINCT column) FROM table;
 
+---count number of transactions from payment table---------
+SELECT COUNT(*) FROM payment;
 
+---count the distinct amount types from payments----------
+SELECT COUNT(DISTINCT amount) FROM payment;
+
+---LIMIT-----------limit number of rows in a query----------goes at END of query---------------
+SELECT * FROM customer
+LIMIT 5;
+
+---ORDER BY---------------sort result set in ASCENDING or DESCENDING order based on criteria------------use comma for multiple col----
+SELECT column FROM table ORDER BY column ASC/DESC;
+
+---find first name/last name in alphabetical order? sort by first name A-Z then by last name Z-A?----------
+SELECT first_name, last_name FROM customer ORDER BY first_name ASC;
+SELECT first_name, last_name FROM customer ORDER BY first_name ASC, last_name DESC;                 (Aaron Selby; Amanda Carter;...)
+
+---
 
