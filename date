@@ -1,0 +1,4 @@
+---dates (get current date)---------------------------------------
+Select GETDATE()
+
+Select GETDATE() - 2
