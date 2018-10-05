@@ -5,9 +5,49 @@ Insert into MYEMPLOYEE values (1, ‘Clement’, ‘Huang’)
 Insert into MYEMPLOYEE values (2, ‘Betty’, ‘Young’)
 Insert into MYEMPLOYEE values (3, ‘Will’, ‘Huang’)
 
+---inter join----------------------------------------------------------
+
 Create Table MYSALARY (employeeID INT, Salary FLOAT)
 
 Insert into MYSALARY values (1, 1000)
-Insert into MYSALARY values (1, 3000)
-Insert into MYSALARY values (1, 5000)
+Insert into MYSALARY values (2, 3000)
+Insert into MYSALARY values (3, 5000)
+
+Select A.FirstName, A.LastName, B.Salary
+from MYEMPLOYEE as A Inner join MYSALARY as B 
+on A.employeeID = B.employeeID
+
+---left outer join-----------------------------------------------------
+Create Table myphone (employeeID INT, phonenumber INT)
+Insert into myphone values (1, 17142490388)
+Insert into myphone values (2, 16027531)
+
+Select a.firstname, a.lastname, b.phonenumber from MYEMPLOYEE as A Left Join myphone as B
+on A.employeeID = B.employeeID
+
+---right outer join---------------------------------------------------
+Create Table MYPARKING (employeeID INT, ParkingSpot VARCHAR(20))
+Insert into MYPARKING values (1, 'a1')
+Insert into MYPARKING values (2, 'a2')
+
+Select A.ParkingSpot, B.FirstName, B.LastName from MYPARKING as A Right join MYEMPLOYEE as B 
+on A.employeeID = B.employeeID
+
+---full outer join-------------------------------------------------------------
+Create Table MYCUSTOMER (CustomerID INT, CustomerName VARCHAR(20))
+Insert into MYCUSTOMER values (1, 'Verizon')
+Insert into MYCUSTOMER values (2, 'ATT')
+
+Create Table MYORDER (OrderNumber INT, OrderName VARCHAR(20), CustomerID INT)
+Insert into MYORDER values (1, 'order1', 1)
+Insert into MYORDER values (2, 'order1', 2)
+Insert into MYORDER values (3, 'order1', 7)
+Insert into MYORDER values (4, 'order1', 8)
+
+Select A.CustomerID, A.CustomerName, B.OrderNumber, B.OrderName
+from MYCUSTOMER as A Full Outer Join MYORDER as B
+on A.CustomerID = B.CustomerID
+
+---cross join---------------------------------------------------------
+Select from MYCUSTOMER Cross Join MYSALARY
 
