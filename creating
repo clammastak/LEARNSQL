@@ -13,7 +13,42 @@ insert into MYTESTTABLE(rollno, firstName, lastName)
 VALUES(1, 'Clement', 'Huang')
                                                           result: one row affected
                                                       
----Querying---
+---Querying-------------------------------------------------------------------
+use [AdventureWorks2012]
 
+Select * from [HumanResources].[Department]
 
+---show all department names--------------------------------------------------
+Select Name from [HumanResources].[Department]
 
+---show me all the groups-------------------------------------------------
+Select GroupName from [HumanResources].[Department]
+
+---DISTINCT---gives only the unique values, removes duplicates---------------
+Select DISTINCT GroupName from [HumanResources].[Department]
+
+---WHERE---filtering-------(only show departments part of manufacturing)----------------------------------------------
+Select Name, GroupName from [HumanResources].[Department]
+WHERE GroupName LIKE 'manufacturing'
+
+---give all employees from employee table-------------------------------------
+Select * from [HumanResources].[Employee]
+
+---give me list of all employees who have orglevel = 2-------------------------
+Select * from [HumanResources].[Employee]
+WHERE OrganizationLevel = 2
+
+---give me list of all employees who have orglevel = 2 or 3------------------------
+Select * from [HumanResources].[Employee]
+WHERE OrganizationLevel IN (2,3)
+
+---give me list of all employees who have title as facilities manager--------------------
+Select * from [HumanResources].[Employee] WHERE JobTitle LIKE 'facilities manager'
+
+---give me list of all employees who have manager in their title (as the last word)--------------------
+Select * from [HumanResources].[Employee] WHERE JobTitle LIKE '%manager'
+
+---give me list of all employees who have control in their title--------------------
+Select * from [HumanResources].[Employee] WHERE JobTitle LIKE '%control%'
+
+---
