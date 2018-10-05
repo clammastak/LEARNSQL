@@ -4,9 +4,20 @@ Select Name, ListPrice from [Production].[Product]
 Select Name, ListPrice, ListPrice + 10 AS Adj_ListPrice from [Production].[Product]
 
 ---INTO---store into a seperate table by creating a new table Product_2-------------------------
-Select Name, ListPrice, ListPrice + 10 AS Adj_ListPrice from [Production].[Product] INTO [Production].[Product_2]
+Select Name, ListPrice, ListPrice + 10 AS Adj_ListPrice INTO [Production].[Product_2] FROM [Production].[Product] 
 
 Select * from [Production][Product_2]
+
+---creating a temporary table-------------------------------------
+Select Name, ListPrice, ListPrice + 10 AS Adj_ListPrice INTO #temp FROM [Production].[Product] 
+
+---delete data from table---------------------------------------
+DELETE FROM [Production].[Product_2]
+WHERE Name LIKE 'Bearing Ball'
+
+---Update data in table---------------------------------------
+UPDATE [Production].[Product_2]
+SET Name = 'Blade_NEW' WHERE Name LIKE 'Blade'
 
 
 
