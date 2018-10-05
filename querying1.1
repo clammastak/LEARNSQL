@@ -1,0 +1,12 @@
+---calculated columns----------------create new column titled "adj lp" with values list price + 10----------------------------------
+Select Name, ListPrice from [Production].[Product]
+
+Select Name, ListPrice, ListPrice + 10 AS Adj_ListPrice from [Production].[Product]
+
+---INTO---store into a seperate table by creating a new table Product_2-------------------------
+Select Name, ListPrice, ListPrice + 10 AS Adj_ListPrice from [Production].[Product] INTO [Production].[Product_2]
+
+Select * from [Production][Product_2]
+
+
+
