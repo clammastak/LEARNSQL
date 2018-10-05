@@ -51,4 +51,10 @@ Select * from [HumanResources].[Employee] WHERE JobTitle LIKE '%manager'
 ---give me list of all employees who have control in their title--------------------
 Select * from [HumanResources].[Employee] WHERE JobTitle LIKE '%control%'
 
----
+---give me all employees who are born after Jan 1, 1980------------------------------------
+Select * from [HumanResources].[Employee] WHERE BirthDate > '1/1/1980'
+
+---give me all employees who are born between Jan 1, 1970 and Jan 1, 1980--------------------
+Select * from [HumanResources].[Employee] WHERE BirthDate > '1/1/1970' AND BirthDate < '1/1/1980'
+
+Select * from [HumanResources].[Employee] WHERE BirthDate BETWEEN '1/1/1970' AND '1/1/1980'
