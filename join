@@ -1,0 +1,13 @@
+# LEARNSQL
+Create Table MYEMPLOYEE (employeeID INT, FirstName VARCHAR(20), LastName VARCHAR(20))
+
+Insert into MYEMPLOYEE values (1, ‘Clement’, ‘Huang’)
+Insert into MYEMPLOYEE values (2, ‘Betty’, ‘Young’)
+Insert into MYEMPLOYEE values (3, ‘Will’, ‘Huang’)
+
+Create Table MYSALARY (employeeID INT, Salary FLOAT)
+
+Insert into MYSALARY values (1, 1000)
+Insert into MYSALARY values (1, 3000)
+Insert into MYSALARY values (1, 5000)
+
