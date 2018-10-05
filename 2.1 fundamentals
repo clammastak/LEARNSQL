@@ -108,4 +108,25 @@ SELECT rating, ROUND(AVG(replacement_cost),2) FROM film GROUP BY rating;
 SELECT customer_id, SUM(amount) FROM payment 
 GROUP BY customer_id ORDER BY SUM(amount) DESC LIMIT 5;
 
----HAVING
+---HAVING---used in conjunction with GROUP BY clause to filter group rows that do not satisfy a condition-----------
+---HAVING vs WHERE---Having clause sets condition AFTER group rows created by GROUP BY
+                  ---Where clause sets the condition for individual rows BEFORE GROUP BY clause applies
+
+---
+SELECT customer_id, SUM(amount) 
+FROM payment 
+GROUP BY customer_id
+HAVING SUM(amount) > 200;
+
+---
+SELECT store_id, COUNT(customer_id)
+FROM customer
+GROUP BY store_id
+HAVING COUNT(customer_id) > 300;
+
+---return film ratings of R,G,PG where the average rental rating is under 3$-------
+SELECT rating, AVG(rental_rate)
+FROM film
+WHERE rating IN ('R','G','PG')
+GROUP BY rating
+HAVING AVG(rental_rate) <3;
