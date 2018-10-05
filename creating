@@ -1,0 +1,19 @@
+create database MYTESTDB
+
+use MYTESTDB
+
+create table MYTESTTABLE (
+rollno INT, firstName VARCHAR(50), lastName VARCHAR(50)
+)
+
+use MYTESTDB
+select rollno, firstName, lastName from MYTESTTABLE       (no entries)
+
+insert into MYTESTTABLE(rollno, firstName, lastName)
+VALUES(1, 'Clement', 'Huang')
+                                                          result: one row affected
+                                                      
+---Querying---
+
+
+
