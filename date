@@ -2,3 +2,24 @@
 Select GETDATE()
 
 Select GETDATE() - 2
+
+---datepart------------------------
+Select DATEPART(yyyy, GETDATE()) as YearNumber
+Select DATEPART(mm, GETDATE())
+Select DATEPART(dd, GETDATE())
+
+---dateadd-----------------(+4 days to current date)-------------------------------------
+Select DATEADD(day, 4, GETDATE())               Today + 4 days
+Select DATEADD(day, 4, '10/05/2018')            (10/09/18)
+Select DATEADD(month, 4, GETDATE())             Today + 4 months     
+Select DATEADD(year, 4, GETDATE())             Today + 4 years
+
+----
+Select Top 10 * from [Production].[WorkOrder]
+
+---create column for duration of dates-----------------------------------------------------
+Select workOrderID, ProductID, StartDate, EndDate, DATEDIFF(day, StartDate, EndDate)
+from [Production].[WorkOrder]
+
+--------first day of this month-----------------------------------
+Select DATEADD(dd, -(DATEPART(day, GETDATE()) -1 ), GETDATE())
