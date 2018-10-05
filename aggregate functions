@@ -34,3 +34,18 @@ Select OrderNumber, OrderName, LOWER(OrderName) from MYORDER
 ---UPPERcase function--------------------------(convert to uppercase)----------------
 Select OrderNumber, OrderName, UPPER(OrderName) from MYORDER
 
+---LENGTH function-----------------------------count the number of characters--------
+Select OrderNumber, OrderName, LEN(ORDERNAME) from MYORDER        (10)
+
+---convert first letter to UPPER, convert second character to end of string to LOWER, concatenate both strings---------
+Select OrderNumber, OrderName, CONCAT(UPPER(LEFT(OrderName, 1)), LOWER(SUBSTRING(OrderName, 2, LEN(OrderName)))) from MYORDER
+result: Someorder1
+
+---TRIM
+Select '   Mytext   '
+Select LEN('   Mytext   ')    (length of 10)
+
+---LTRIM/RTRIM---remove spaces on the left
+Select LTRIM('   Mytext   ')
+Select RTRIM('   Mytext   ')
+Select LTRIM(RTRIM('   Mytext   '))
