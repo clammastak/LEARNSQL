@@ -15,8 +15,15 @@ SELECT DISTINCT rental_rate FROM film;
 SELECT * FROM film;
 SELECT DISTINCT rating FROM film;
 
+---what are all the customesr whose first names are Jamie? Jamie Rice?------------
+SELECT last_name, first_name FROM customer WHERE first_name = 'Jamie' ;
+SELECT last_name, first_name FROM customer WHERE first_name = 'Jamie' AND 'Rice';
+---who paid the rental amount is or less than 1USD or greater than 8USD?----------------
+SELECT customer_id, amount, payment_date FROM payment WHERE amount<=1 OR amount >=8;
 
-
+---find all payments that are NOT equal to 4.99? or equal to 4.99 or 1.99?---------------------------------
+SELECT * FROM payment WHERE amount != 4.99;
+SELECT amount, payment_date FROM payment WHERE amount = 4.99 OR amount = 1.99;
 
 
 
