@@ -63,9 +63,49 @@ SELECT amount, payment_date FROM payment WHERE payment_date BETWEEN '2007-02-07'
 ---IN---------------------check if a value matches any value in a list of values------value IN (SELECT value FROM table)
 SELECT customer_id FROM rental WHERE customer_id IN (1,2) ORDER BY return_date DESC;
 
----LIKE-------------------combine with wildcard characters to find similar matches----------------------
+---LIKE-------------------combine with wildcard characters to find similar matches---------------Like is case sensitive-------
 SELECT first_name, last_name FROM customer WHERE first_name LIKE 'Jen%';                    (Jennifer, Jennie, Jenny)
 SELECT first_name, last_name FROM customer WHERE first_name LIKE '%y';                      (Mary, Dorothy, Nancy,...)
 SELECT first_name, last_name FROM customer WHERE first_name LIKE '%er%';                    (Jennifer, Kimberly, Catherine,...)
+SELECT first_name, last_name FROM customer WHERE first_name LIKE '_her%';                   (Cheryl, Theresa, Sherry,...)
 
+---how many payment transactions were greater than 5.00?------------
+SELECT COUNT(amount) FROM payment WHERE amount > 5;
+---how many unique districts are our customers from?---------------
+SELECT COUNT(DISTINCT district)) FROM address;
+---retrieve list of names for those distinct districts------------
+SELECT DISTINCT district FROM address;
+---how many films have a rating of R and replacement cost between 5 and 15?-------------------
+SELECT COUNT(*) FROM film WHERE rating = 'R' AND replacement_cost BETWEEN 5 AND 15;
 
+---GROUP BY-----------divides the rows returned from query into groups-----apply an aggregate function-------
+SELECT customer_id FROM payment GROUP BY customer_id;                    (only returns distinct customer_id)
+
+---how much a customer hasn't paid?---------------------------------
+SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id;      (251, $100.75; 106, $95.79; 120, $134.70,...)
+SELECT customer_id, SUM(amount) FROM payment GROUP BY customer_id ORDER BY SUM(amount) DESC;  
+
+---which staff member has processed the most orders?-----------------
+SELECT staff_id, COUNT(payment_id) FROM payment GROUP BY staff_id;      (2, 7304; 1, 7292)
+
+---how many films of each rating type do we have?-------------------
+SELECT rating, COUNT(rating) FROM film GROUP BY rating;                 (R, 195; G, 178; NC-17, 210; PG-13, 223; PG, 194)
+
+---what are the rental durations?------------------------------------
+SELECT rental_duration, COUNT(rental_duration) FROM film GROUP BY rental_duration       (6, 212; 4, 203; 5, 191;...)
+
+---average rental rate for a movie's rating?------------------------
+SELECT rating, AVG(rental_rate) FROM film GROUP BY rating;              (R, 2.9; G, 2.8; NC-17, 2.9; PG-13, 3.03; PG, 3.05)
+
+---how many payments did each staff member handle? and how much was the total amount processed by each staff member?------
+SELECT staff_id, COUNT(amount), SUM(amount) FROM payment GROUP BY staff_id;             (2, 7304, $31,059.92; 1, 7292, $30,252.12)
+
+---average replacement cost of movies by rating?------------------------
+SELECT rating, AVG(replacement_cost) FROM film GROUP BY rating;         (R, $20.23; G, $20.12; NC-17, $20.13; PG-13 $20.40; PG, $18.9)
+SELECT rating, ROUND(AVG(replacement_cost),2) FROM film GROUP BY rating;
+
+---return the customer ids of the top 5 spenders------------------------
+SELECT customer_id, SUM(amount) FROM payment 
+GROUP BY customer_id ORDER BY SUM(amount) DESC LIMIT 5;
+
+---HAVING
