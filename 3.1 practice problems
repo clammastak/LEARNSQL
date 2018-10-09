@@ -37,3 +37,5 @@ Click the Group By answers link below if you have any problems.
 select customerid, count(customerid), sum(price)
 from items_ordered
 group by customerid;
+
+http://www.sqlcourse2.com/having.html
