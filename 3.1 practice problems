@@ -1,0 +1,39 @@
+Select the average price of all of the items ordered that were purchased in the month of Dec.
+
+SELECT avg(price)
+FROM items_ordered
+WHERE order_date LIKE '%Dec%';
+
+What are the total number of rows in the items_ordered table?
+
+SELECT count(*)
+FROM items_ordered;
+
+For all of the tents that were ordered in the items_ordered table, what is the price of the lowest tent? 
+Hint: Your query should return the price only.
+
+SELECT min(price) FROM items_ordered WHERE item = 'Tent';
+
+How many people are in each unique state in the customers table? 
+Select the state and display the number of people in each. 
+Hint: count is used to count rows in a column, sum works on numeric data only.
+
+Select state, count(state)
+FROM customers
+GROUP BY state;
+
+From the items_ordered table, select the item, maximum price, and minimum price for each specific item in the table. 
+Hint: The items will need to be broken up into separate groups.
+
+SELECT item, max(price), min(price)
+from items_ordered
+group by item;
+
+
+How many orders did each customer make? Use the items_ordered table. 
+Select the customerid, number of orders they made, and the sum of their orders. 
+Click the Group By answers link below if you have any problems.
+
+select customerid, count(customerid), sum(price)
+from items_ordered
+group by customerid;
